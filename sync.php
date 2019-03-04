@@ -18,6 +18,7 @@ $args =
     'bucket' => null,
     'token' => null,
     'url' => null,
+    'delay' => 1
 ];
 
 if($argv)
@@ -60,7 +61,7 @@ if(!empty($out))
             }else{
                 echo sprintf('%s, success (%d)', $url, $res) . PHP_EOL;
             }
-            sleep(1);
+            sleep((int)$args['delay']);
         }
     }
 }

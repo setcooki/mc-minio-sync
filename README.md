@@ -19,3 +19,4 @@ Arguments:
 - `--bucket`: expects the minio bucket
 - `--token`: expects the wp-minio-sync plugin access token - see https://github.com/setcooki/wp-minio-sync
 - `--url`: expects wp-minio-sync plugin sync script url - see https://github.com/setcooki/wp-minio-sync/blob/master/sync.php
+- `--delay`: add a delay in seconds after each file sync

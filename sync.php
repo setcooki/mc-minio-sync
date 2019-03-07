@@ -16,6 +16,7 @@ $args =
     'mc' => 'mc',
     'target' => null,
     'bucket' => null,
+    'path' => null,
     'token' => null,
     'url' => null,
     'delay' => 1
@@ -44,7 +45,14 @@ if(empty($args['token'])) die("need --token value" . PHP_EOL);
 if(empty($args['url'])) die("need --url value" . PHP_EOL);
 
 $out = [];
-$cmd = vsprintf('%s ls -r %s/%s', [$args['mc'], $args['target'], $args['bucket']]);
+if(!empty($args['path']))
+{
+    $bucket = sprintf('%s/%s', rtrim($args['bucket'], ' /'), ltrim($args['path'], ' /'));
+}else{
+    $bucket = rtrim($args['bucket'], ' /');
+}
+
+$cmd = vsprintf('%s ls -r %s/%s', [$args['mc'], $args['target'], $bucket]);
 exec($cmd, $out);
 if(!empty($out))
 {
